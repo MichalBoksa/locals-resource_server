@@ -1,4 +1,4 @@
-package com.example.locals_resource_server.controllers;
+package com.example.locals_resource_server.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
