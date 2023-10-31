@@ -41,14 +41,15 @@ public class LocationService {
         return locationDetails;
     }
 
-    public List<LocationSearch> getCityAttractions(String cityName) {
-        DataLocation loclist= webClient.get().uri(apiURL + "search?" + "searchQuery=" + cityName + "&language=en&key=" + apiKey)
+    public List<LocationDetails> getCityAttractions(String cityName) {
+        List<LocationSearch> datalist = webClient.get().uri(apiURL + "search?" + "searchQuery=" + cityName + "&language=en&key=" + apiKey)
                 .header("accept", "application/json")
                 .retrieve()
-                .bodyToMono(DataLocation.class).block();
+                .bodyToMono(DataLocation.class).block().getData();
 
-        loclist.getData().remove(0);
-        return loclist.getData();
+       datalist.remove(0);
+       List<LocationDetails> loclist = datalist.stream().map(place -> getLocationDetails(place.getLocation())).collect(Collectors.toList());
+        return loclist;
     }
 
     public List<String> getPlaceImages(String idLocation) {
