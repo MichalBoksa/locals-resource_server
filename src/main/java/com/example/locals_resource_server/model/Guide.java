@@ -3,24 +3,25 @@ package com.example.locals_resource_server.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@Table
+@Table(name="guides")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Guide {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "guide_id")
-    private String id;
-
+    @Column(name = "id_guide")
+    private int id;
     private String name;
     private String city;
-    private String price;
+    private int price;
     @Column(name = "phone_number")
     private String phoneNumber;
     @Column(name = "about_me")
@@ -28,7 +29,20 @@ public class Guide {
     @Column(name = "what_to_offer")
     private String whatToOffer;
     private String languages;
+    @Column(name = "image_url")
+    private String imageURL;
     private String activities;
 
-
+    public Guide(Guide guide) {
+        this.id = guide.getId();
+        this.name = guide.getName();
+        this.city = guide.getCity();
+        this.price = guide.getPrice();
+        this.phoneNumber = guide.getPhoneNumber();
+        this.aboutMe = guide.aboutMe;
+        this.whatToOffer = guide.whatToOffer;
+        this.languages = guide.languages;
+        this.imageURL = guide.imageURL;
+        this.activities = guide.getActivities();
+    }
 }

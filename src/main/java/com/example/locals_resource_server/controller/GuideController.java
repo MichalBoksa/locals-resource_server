@@ -19,7 +19,12 @@ public class GuideController {
     private GuideService guideService;
 
     @GetMapping(path = "/cityGuides/{city}")
-    public List<Guide> getGuidesInCity (@PathVariable String city) {
+    public List<Guide> getGuidesInCity(@PathVariable String city) {
         return guideService.getGuidesInCity(city);
+    }
+
+    @GetMapping(path="guideDetails/{id}")
+    public Guide getGuideDetails(@PathVariable int id) {
+        return guideService.getGuideDetails(id);
     }
 }

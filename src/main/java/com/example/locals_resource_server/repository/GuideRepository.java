@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface GuideRepository extends JpaRepository<Guide,Integer> {
     List<Guide> findGuideByCity(String city);
 
+    Optional<Guide> findGuideById(int id);
+
 }
