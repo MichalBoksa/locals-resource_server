@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,5 +66,14 @@ public class LocationService {
       ).collect(Collectors.toList()); ;
 
       return urlList;
+    }
+
+    public List<LocationDetails> getFavoritesLocationDetails(String ids) {
+        List<LocationDetails> result = new ArrayList<>();
+        List<String> idList = Arrays.asList(ids.split(","));
+        for(String id : idList) {
+            result.add(getLocationDetails(id));
+        }
+        return result;
     }
 }
