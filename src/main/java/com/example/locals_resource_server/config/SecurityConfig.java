@@ -23,7 +23,8 @@ public class SecurityConfig {
                         .jwtAuthenticationConverter(new CustomJwtAuthorityTokenConverter())
         );
         http.authorizeHttpRequests(c ->
-                c.anyRequest().permitAll());
+                c.anyRequest().authenticated());
+        http.csrf().disable();
 
         return http.build();
     }

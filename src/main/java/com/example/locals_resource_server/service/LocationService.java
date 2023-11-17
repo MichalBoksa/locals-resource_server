@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,14 +43,15 @@ public class LocationService {
         return locationDetails;
     }
 
-    public List<LocationSearch> getCityAttractions(String cityName) {
-        DataLocation loclist= webClient.get().uri(apiURL + "search?" + "searchQuery=" + cityName + "&language=en&key=" + apiKey)
+    public List<LocationDetails> getCityAttractions(String cityName) {
+        List<LocationSearch> datalist = webClient.get().uri(apiURL + "search?" + "searchQuery=" + cityName + "&language=en&key=" + apiKey)
                 .header("accept", "application/json")
                 .retrieve()
-                .bodyToMono(DataLocation.class).block();
+                .bodyToMono(DataLocation.class).block().getData();
 
-        loclist.getData().remove(0);
-        return loclist.getData();
+       datalist.remove(0);
+       List<LocationDetails> loclist = datalist.stream().map(place -> getLocationDetails(place.getLocation())).collect(Collectors.toList());
+        return loclist;
     }
 
     public List<String> getPlaceImages(String idLocation) {
@@ -63,5 +66,14 @@ public class LocationService {
       ).collect(Collectors.toList()); ;
 
       return urlList;
+    }
+
+    public List<LocationDetails> getFavoritesLocationDetails(String ids) {
+        List<LocationDetails> result = new ArrayList<>();
+        List<String> idList = Arrays.asList(ids.split(","));
+        for(String id : idList) {
+            result.add(getLocationDetails(id));
+        }
+        return result;
     }
 }
