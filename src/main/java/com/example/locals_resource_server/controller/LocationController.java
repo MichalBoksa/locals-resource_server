@@ -4,12 +4,13 @@ import com.example.locals_resource_server.model.Location.LocationDetails;
 import com.example.locals_resource_server.model.Location.LocationSearch;
 import com.example.locals_resource_server.service.LocationService;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
 
-@RestController
+@Controller
 @AllArgsConstructor
 @RequestMapping("/attractions")
 public class LocationController {

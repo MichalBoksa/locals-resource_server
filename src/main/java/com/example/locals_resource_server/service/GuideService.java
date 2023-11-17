@@ -1,5 +1,6 @@
 package com.example.locals_resource_server.service;
 
+import com.example.locals_resource_server.model.Booking;
 import com.example.locals_resource_server.model.Guide;
 import com.example.locals_resource_server.repository.GuideRepository;
 import lombok.AllArgsConstructor;
@@ -24,4 +25,4 @@ public class GuideService {
         return guide.map(Guide::new)
                 .orElseThrow(() -> new RuntimeException("Runtime exception"));
     }
-}
+ }

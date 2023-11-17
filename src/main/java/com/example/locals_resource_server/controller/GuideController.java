@@ -1,13 +1,11 @@
 package com.example.locals_resource_server.controller;
 
+import com.example.locals_resource_server.model.Booking;
 import com.example.locals_resource_server.model.Guide;
 import com.example.locals_resource_server.service.GuideService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +25,5 @@ public class GuideController {
     public Guide getGuideDetails(@PathVariable int id) {
         return guideService.getGuideDetails(id);
     }
+
 }

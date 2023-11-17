@@ -1,10 +1,13 @@
 package com.example.locals_resource_server.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 
 @Entity
@@ -33,6 +36,10 @@ public class Guide {
     private String imageURL;
     private String activities;
 
+    @JsonManagedReference(value="guide-booking")
+    @OneToMany(mappedBy = "guide", fetch = FetchType.EAGER)
+    private List<Booking> bookings;
+
     public Guide(Guide guide) {
         this.id = guide.getId();
         this.name = guide.getName();
@@ -44,5 +51,8 @@ public class Guide {
         this.languages = guide.languages;
         this.imageURL = guide.imageURL;
         this.activities = guide.getActivities();
+    }
+    public Guide(int id) {
+        this.id = id;
     }
 }

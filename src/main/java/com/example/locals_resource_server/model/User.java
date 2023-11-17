@@ -23,10 +23,16 @@ public class User {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int id;
-
     private String email;
+    private String name;
+    @Column(name="phone_number")
+    private String phoneNumber;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Favorites> locations;
+
+    @JsonManagedReference(value="user-booking")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Booking> bookings;
 }
