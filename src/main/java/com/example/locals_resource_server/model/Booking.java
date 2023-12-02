@@ -19,6 +19,8 @@ public class Booking {
     private int id;
     private Date date;
     private String message;
+    @Column(name="is_accepted")
+    private boolean isAccepted;
 
     @JsonBackReference(value="guide-booking")
     @ManyToOne

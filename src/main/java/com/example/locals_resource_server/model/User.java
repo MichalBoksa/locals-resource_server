@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 
+import java.sql.Blob;
 import java.util.List;
 
 @Entity
@@ -27,6 +28,8 @@ public class User {
     private String name;
     @Column(name="phone_number")
     private String phoneNumber;
+    @Column(name="image_uri")
+    private String imageUri;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
@@ -35,4 +38,15 @@ public class User {
     @JsonManagedReference(value="user-booking")
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Booking> bookings;
+
+    public User(User user) {
+        this.id = user.id;
+        this.email = user.email;
+        this.name = user.name;
+        this.phoneNumber = user.phoneNumber;
+        this.locations = user.locations;
+        this.bookings = user.bookings;
+        this.imageUri = user.imageUri;
+    }
+
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @AllArgsConstructor
 @RequestMapping("/attractions")
 public class LocationController {

@@ -12,4 +12,8 @@ public interface GuideRepository extends JpaRepository<Guide,Integer> {
 
     Optional<Guide> findGuideById(int id);
 
+    Optional<Guide> findGuideByEmail(String email);
+
+
+
 }

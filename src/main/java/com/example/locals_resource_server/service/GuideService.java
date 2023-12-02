@@ -3,6 +3,7 @@ package com.example.locals_resource_server.service;
 import com.example.locals_resource_server.model.Booking;
 import com.example.locals_resource_server.model.Guide;
 import com.example.locals_resource_server.repository.GuideRepository;
+import com.example.locals_resource_server.repository.UserRepository;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 public class GuideService {
 
     private GuideRepository guideRepository;
+    private UserRepository userRepository;
 
     public List<Guide> getGuidesInCity(String city) {
         return guideRepository.findGuideByCity(city);
@@ -25,4 +27,16 @@ public class GuideService {
         return guide.map(Guide::new)
                 .orElseThrow(() -> new RuntimeException("Runtime exception"));
     }
+
+    public void createNewGuide(Guide guide) {
+       //TODO add if exist check
+        guideRepository.save(guide);
+    }
+
+    public Guide getGuideDetails(String email) {
+        var guide = guideRepository.findGuideByEmail(email);
+        return guide.map(Guide::new)
+                .orElseThrow(() -> new RuntimeException("Runtime exception"));
+    }
+
  }

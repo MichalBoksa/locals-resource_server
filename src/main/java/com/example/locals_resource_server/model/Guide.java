@@ -35,6 +35,7 @@ public class Guide {
     @Column(name = "image_url")
     private String imageURL;
     private String activities;
+    private String email;
 
     @JsonManagedReference(value="guide-booking")
     @OneToMany(mappedBy = "guide", fetch = FetchType.EAGER)
@@ -46,11 +47,12 @@ public class Guide {
         this.city = guide.getCity();
         this.price = guide.getPrice();
         this.phoneNumber = guide.getPhoneNumber();
-        this.aboutMe = guide.aboutMe;
-        this.whatToOffer = guide.whatToOffer;
-        this.languages = guide.languages;
-        this.imageURL = guide.imageURL;
+        this.aboutMe = guide.getAboutMe();
+        this.whatToOffer = guide.getWhatToOffer();
+        this.languages = guide.getLanguages();
+        this.imageURL = guide.getImageURL();
         this.activities = guide.getActivities();
+        this.email = guide.getEmail();
     }
     public Guide(int id) {
         this.id = id;

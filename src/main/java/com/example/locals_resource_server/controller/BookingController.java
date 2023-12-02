@@ -6,6 +6,8 @@ import com.example.locals_resource_server.service.BookingService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/booking")
@@ -16,4 +18,9 @@ public class BookingController {
     @PostMapping("/addBooking")
     public void addNewBooking(@RequestBody Booking booking) {
         bookingService.addNewBooking(booking);}
+
+    @GetMapping("/getUserBookings/{email}")
+    public List<Booking> getUserBookings(@PathVariable String email) {
+        return bookingService.getUserBookings(email);
+    }
 }

@@ -21,9 +21,20 @@ public class GuideController {
         return guideService.getGuidesInCity(city);
     }
 
-    @GetMapping(path="guideDetails/{id}")
+    @GetMapping(path="/guideDetails/{id}")
     public Guide getGuideDetails(@PathVariable int id) {
         return guideService.getGuideDetails(id);
     }
+
+    @GetMapping(path="/guideDetails/{email}")
+    public Guide getGuideDetails(@PathVariable String email) {
+        return guideService.getGuideDetails(email);
+    }
+
+    @PostMapping(path="/addNew")
+    public void createGuide(@RequestBody Guide guide) {
+         guideService.createNewGuide(guide);
+    }
+
 
 }
