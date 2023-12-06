@@ -1,15 +1,12 @@
 package com.example.locals_resource_server.model;
 
-import com.example.locals_resource_server.model.Location.LocationDetails;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
 
-import java.sql.Blob;
 import java.util.List;
 
 @Entity
@@ -35,9 +32,12 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Favorites> locations;
 
-    @JsonManagedReference(value="user-booking")
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Booking> bookings;
+//    @JsonManagedReference(value="user-booking")
+//    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+//    private List<Booking> bookings;
+
+    @Column(name="is_guide")
+    private boolean isGuide;
 
     public User(User user) {
         this.id = user.id;
@@ -45,8 +45,9 @@ public class User {
         this.name = user.name;
         this.phoneNumber = user.phoneNumber;
         this.locations = user.locations;
-        this.bookings = user.bookings;
+//        this.bookings = user.bookings;
         this.imageUri = user.imageUri;
+        this.isGuide = user.isGuide;
     }
 
 }

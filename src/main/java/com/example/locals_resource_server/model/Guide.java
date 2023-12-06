@@ -1,5 +1,6 @@
 package com.example.locals_resource_server.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -37,24 +39,26 @@ public class Guide {
     private String activities;
     private String email;
 
-    @JsonManagedReference(value="guide-booking")
-    @OneToMany(mappedBy = "guide", fetch = FetchType.EAGER)
-    private List<Booking> bookings;
+//    @JsonManagedReference(value="guide-booking")
+//    @OneToMany(mappedBy = "guide", fetch = FetchType.LAZY)
+//    private List<Booking> bookings;
 
     public Guide(Guide guide) {
-        this.id = guide.getId();
-        this.name = guide.getName();
-        this.city = guide.getCity();
-        this.price = guide.getPrice();
-        this.phoneNumber = guide.getPhoneNumber();
-        this.aboutMe = guide.getAboutMe();
-        this.whatToOffer = guide.getWhatToOffer();
-        this.languages = guide.getLanguages();
-        this.imageURL = guide.getImageURL();
-        this.activities = guide.getActivities();
-        this.email = guide.getEmail();
+        this.id = guide.id;
+        this.name = guide.name;
+        this.city = guide.city;
+        this.price = guide.price;
+        this.phoneNumber = guide.phoneNumber;
+        this.aboutMe = guide.aboutMe;
+        this.whatToOffer = guide.whatToOffer;
+        this.languages = guide.languages;
+        this.imageURL = guide.imageURL;
+        this.activities = guide.activities;
+        this.email = guide.email;
+//        this.bookings = guide.bookings;
     }
     public Guide(int id) {
         this.id = id;
     }
+
 }

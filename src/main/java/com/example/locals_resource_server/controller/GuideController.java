@@ -26,7 +26,7 @@ public class GuideController {
         return guideService.getGuideDetails(id);
     }
 
-    @GetMapping(path="/guideDetails/{email}")
+    @GetMapping(path="/guideDetailsEmail/{email}")
     public Guide getGuideDetails(@PathVariable String email) {
         return guideService.getGuideDetails(email);
     }
