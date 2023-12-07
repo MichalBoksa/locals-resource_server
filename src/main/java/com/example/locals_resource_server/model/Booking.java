@@ -40,6 +40,6 @@ public class Booking {
 
 
     @Column(name="is_accepted")
-    private boolean isAccepted;
+    private Boolean isAccepted;
 
 }
