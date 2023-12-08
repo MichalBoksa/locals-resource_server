@@ -26,4 +26,9 @@ public class FavoritesController {
         favoritesService.addNewFavoritesList(favorites);
     }
 
+    @PutMapping(path = "/addListElement")
+    public void addListElement(@RequestBody List<Integer> ids, @RequestBody String placeId) {
+        favoritesService.addNewItemFavoritesList(ids, placeId);
+    }
+
 }

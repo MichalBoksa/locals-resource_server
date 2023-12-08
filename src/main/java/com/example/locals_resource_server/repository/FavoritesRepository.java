@@ -7,4 +7,5 @@ import java.util.ArrayList;
 
 public interface FavoritesRepository extends JpaRepository<Favorites,Integer> {
     ArrayList<Favorites> findFavoritesByUserId(int userId);
+    Favorites findFavoritesById(int id);
 }
