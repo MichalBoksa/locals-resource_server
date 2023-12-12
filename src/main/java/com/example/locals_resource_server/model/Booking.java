@@ -3,7 +3,9 @@ package com.example.locals_resource_server.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -13,6 +15,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "bookings")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Booking {
 
     @Id
@@ -37,9 +41,19 @@ public class Booking {
 @Column(name = "user_id")
     private int userId;
 
-
-
     @Column(name="is_accepted")
     private Boolean isAccepted;
 
+    public Booking(Booking booking) {
+        this.id = booking.id;
+        this.date = booking.date;
+        this.message = booking.message;
+        this.guideId = booking.guideId;
+        this.userId = booking.userId;
+        this.isAccepted = booking.isAccepted;
+    }
+
+    public void acceptBooking() {
+        setIsAccepted(true);
+    }
 }

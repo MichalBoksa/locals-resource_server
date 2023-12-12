@@ -24,4 +24,12 @@ public class BookingService {
        int id = userRepository.findUserByEmail(email).get().getId();
        return bookingRepository.findAllByUserId(id);
     }
+
+    public void acceptBooking(int id) {
+        var booking = bookingRepository.findBookingById(id);
+       Booking bookingAccepted = booking.map(Booking::new)
+                .orElseThrow(() -> new RuntimeException("Runtime exception"));
+       bookingAccepted.acceptBooking();
+       bookingRepository.save(bookingAccepted);
+    }
 }

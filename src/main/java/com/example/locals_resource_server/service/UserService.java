@@ -16,4 +16,10 @@ public class UserService {
         return user.map(User::new)
                 .orElseThrow(() -> new RuntimeException("Runtime exception"));
     }
+
+    public User getUserById(Integer id) {
+        var user = userRepository.findUserById(id);
+        return user.map(User::new)
+                .orElseThrow(() -> new RuntimeException("Runtime exception"));
+    }
 }

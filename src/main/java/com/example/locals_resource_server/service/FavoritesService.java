@@ -26,14 +26,16 @@ public class FavoritesService {
         StringBuilder ids;
         for(Integer item : listFavs) {
            fav = favoritesRepository.findFavoritesById(item);
-           ids = new StringBuilder(fav.getPlaceIds());
-           if(ids.isEmpty()){
-               ids.append(",").append(placeId);
+
+           if(fav.getPlaceIds() == null || fav.getPlaceIds().isEmpty()){
+               fav.setPlaceIds(placeId + ",");
            }
            else {
-               ids.append(placeId);
-           }
+               ids = new StringBuilder(fav.getPlaceIds());
+               ids.append(placeId).append(",");
                fav.setPlaceIds(ids.toString());
+           }
+
            favoritesRepository.save(fav);
         }
     }

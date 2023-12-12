@@ -23,4 +23,7 @@ public class BookingController {
     public List<Booking> getUserBookings(@PathVariable String email) {
         return bookingService.getUserBookings(email);
     }
+
+    @PutMapping("/acceptBooking/{id}")
+    public void acceptBooking(@PathVariable Integer id) {bookingService.acceptBooking(id);}
 }

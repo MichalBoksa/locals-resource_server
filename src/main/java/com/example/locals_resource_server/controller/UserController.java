@@ -19,6 +19,11 @@ public class UserController {
        return userService.getUser(email);
     }
 
+    @GetMapping("/getUserId/{id}")
+    public User getUserById(@PathVariable Integer id) {
+        return userService.getUserById(id);
+    }
+
     @PutMapping("/updateImage/{email}")
     public void updateImage(@PathVariable String email, @RequestBody String image) {
         User user = userService.getUser(email);

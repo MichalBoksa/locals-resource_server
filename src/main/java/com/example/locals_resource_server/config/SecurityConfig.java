@@ -29,7 +29,7 @@ public class SecurityConfig {
 //                .authenticated().and()
 //                .oauth2ResourceServer()
 //                .jwt();
-//        http.csrf().disable().cors(cors -> cors.disable());
+       http.csrf().disable().cors(cors -> cors.disable());
 
         return http.build();
     }

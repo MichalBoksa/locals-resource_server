@@ -2,6 +2,8 @@ package com.example.locals_resource_server.controller;
 
 import com.example.locals_resource_server.model.Booking;
 import com.example.locals_resource_server.model.Guide;
+import com.example.locals_resource_server.model.User;
+import com.example.locals_resource_server.repository.GuideRepository;
 import com.example.locals_resource_server.service.GuideService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -15,6 +17,7 @@ import java.util.List;
 public class GuideController {
 
     private GuideService guideService;
+    private GuideRepository guideRepository;
 
     @GetMapping(path = "/cityGuides/{city}")
     public List<Guide> getGuidesInCity(@PathVariable String city) {
@@ -35,6 +38,12 @@ public class GuideController {
     public void createGuide(@RequestBody Guide guide) {
          guideService.createNewGuide(guide);
     }
+
+    @PutMapping("/update/{email}")
+    public void updateGuide(@PathVariable String email, @RequestBody Guide guide) {
+        guideRepository.save(guide);
+    }
+
 
 
 }
