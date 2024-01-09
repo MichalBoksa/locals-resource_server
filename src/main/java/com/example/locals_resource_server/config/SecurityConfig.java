@@ -22,13 +22,13 @@ public class SecurityConfig {
                 r -> r.jwt().jwkSetUri(jwksUri)
                         .jwtAuthenticationConverter(new CustomJwtAuthorityTokenConverter())
         );
-        http.authorizeHttpRequests(c ->
-                c.anyRequest().permitAll());
+//        http.authorizeHttpRequests(c ->
+//                c.anyRequest().permitAll());
 
-//        http.authorizeHttpRequests().anyRequest()
-//                .authenticated().and()
-//                .oauth2ResourceServer()
-//                .jwt();
+        http.authorizeHttpRequests().anyRequest()
+                .authenticated().and()
+                .oauth2ResourceServer()
+                .jwt();
        http.csrf().disable().cors(cors -> cors.disable());
 
         return http.build();

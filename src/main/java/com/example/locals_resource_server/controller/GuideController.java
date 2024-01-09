@@ -1,12 +1,9 @@
 package com.example.locals_resource_server.controller;
 
-import com.example.locals_resource_server.model.Booking;
 import com.example.locals_resource_server.model.Guide;
-import com.example.locals_resource_server.model.User;
 import com.example.locals_resource_server.repository.GuideRepository;
 import com.example.locals_resource_server.service.GuideService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,6 +39,11 @@ public class GuideController {
     @PutMapping("/update/{email}")
     public void updateGuide(@PathVariable String email, @RequestBody Guide guide) {
         guideRepository.save(guide);
+    }
+
+    @DeleteMapping("/deleteGuide/{email}")
+    public void deleteGuide(@PathVariable String email) {
+        guideService.deleteGuide(email);
     }
 
 

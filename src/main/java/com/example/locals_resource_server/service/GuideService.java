@@ -39,4 +39,8 @@ public class GuideService {
                 .orElseThrow(() -> new RuntimeException("Runtime exception"));
     }
 
+    public void deleteGuide(String email) {
+        guideRepository.delete(getGuideDetails(email));
+    }
+
  }
