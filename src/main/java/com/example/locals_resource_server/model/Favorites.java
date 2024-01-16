@@ -27,11 +27,13 @@ public class Favorites {
     private Date startDate;
     @Column(name = "date_end")
     private Date endDate;
+    @Column(name="user_id")
+    private int userId;
 
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @JsonBackReference
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
 
 }

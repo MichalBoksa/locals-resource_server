@@ -28,13 +28,9 @@ public class User {
     @Column(name="image_uri")
     private String imageUri;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Favorites> locations;
-
-//    @JsonManagedReference(value="user-booking")
+//    @JsonManagedReference
 //    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-//    private List<Booking> bookings;
+//    private List<Favorites> locations;
 
     @Column(name="is_guide")
     private boolean isGuide;
@@ -44,7 +40,7 @@ public class User {
         this.email = user.email;
         this.name = user.name;
         this.phoneNumber = user.phoneNumber;
-        this.locations = user.locations;
+       // this.locations = user.locations;
 //        this.bookings = user.bookings;
         this.imageUri = user.imageUri;
         this.isGuide = user.isGuide;
