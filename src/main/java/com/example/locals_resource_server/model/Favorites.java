@@ -30,10 +30,4 @@ public class Favorites {
     @Column(name="user_id")
     private int userId;
 
-//    @JsonBackReference
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
-
-
 }

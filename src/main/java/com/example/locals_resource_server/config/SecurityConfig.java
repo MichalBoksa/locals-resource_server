@@ -22,8 +22,6 @@ public class SecurityConfig {
                 r -> r.jwt().jwkSetUri(jwksUri)
                         .jwtAuthenticationConverter(new CustomJwtAuthorityTokenConverter())
         );
-//        http.authorizeHttpRequests(c ->
-//                c.anyRequest().permitAll());
 
         http.authorizeHttpRequests().anyRequest()
                 .authenticated().and()

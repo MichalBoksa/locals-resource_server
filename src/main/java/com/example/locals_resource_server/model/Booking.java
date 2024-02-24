@@ -25,17 +25,7 @@ public class Booking {
     private int id;
     private Date date;
     private String message;
-//TODO do it better
-//cuz i didn't get user and guide in response
-//    @JsonBackReference(value="user-booking")
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
-//
-//    @JsonBackReference(value="guide-booking")
-//    @ManyToOne
-//    @JoinColumn(name = "guide_id")
-//    private Guide guide;
+
 @Column(name = "guide_id")
     private int guideId;
 @Column(name = "user_id")

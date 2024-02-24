@@ -7,6 +7,8 @@ import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -21,8 +23,14 @@ public class BookingService {
     }
 
     public List<Booking> getUserBookings(String email) {
-       int id = userRepository.findUserByEmail(email).get().getId();
-       return bookingRepository.findAllByUserId(id);
+        var user = userRepository.findUserByEmail(email);
+        if(user != null && !user.isEmpty()){
+            int id = user.get().getId();
+            return bookingRepository.findAllByUserId(id);
+        }
+        else {
+            return Collections.emptyList();
+        }
     }
 
     public void acceptBooking(int id) {

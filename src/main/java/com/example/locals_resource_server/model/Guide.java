@@ -34,9 +34,6 @@ public class Guide {
     private String activities;
     private String email;
 
-//    @JsonManagedReference(value="guide-booking")
-//    @OneToMany(mappedBy = "guide", fetch = FetchType.LAZY)
-//    private List<Booking> bookings;
 
     public Guide(Guide guide) {
         this.id = guide.id;
@@ -50,7 +47,6 @@ public class Guide {
         this.imageURL = guide.imageURL;
         this.activities = guide.activities;
         this.email = guide.email;
-//        this.bookings = guide.bookings;
     }
     public Guide(int id) {
         this.id = id;

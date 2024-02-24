@@ -20,7 +20,6 @@ private LocationService locationService;
     @GetMapping(path = "/{id_location}")
     public LocationDetails getLocationDetails(@PathVariable String id_location) {
         return locationService.getLocationDetails(id_location);
-        // return locationDetailsFlux.collect(Collectors.toList()).share().block();
     }
 
     @GetMapping(path = "/favoritesLocations/{locationIds}")
